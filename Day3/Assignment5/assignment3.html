@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+    <form action="">
+        <h1>All completed todos</h1>
+        <select name="" id=""></select>
+        <br><br>
+
+        <h1>All non completed todos</h1>
+        <ol></ol>
+    </form>
+
+    <!-- Custom script link -->
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/todos",
+                type: "GET",
+                success: (data) => {
+                    $.each(data, (key, value) => {
+                        if (value.completed) {
+                            $('select').append("<option>" + value.title + "</option>")
+                        } else {
+                            $('ol').append("<li>" + value.title + "</li>")
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+
+
+</body>
+
+</html>
